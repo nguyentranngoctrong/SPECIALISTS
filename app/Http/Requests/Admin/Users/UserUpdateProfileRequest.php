@@ -30,7 +30,7 @@ class UserUpdateProfileRequest extends FormRequest
             'user_password_old' => 
             ['required',
                 function ($attribute, $user_password_old, $fail) {
-                    if (!Hash::check($user_password_old, Auth::user()->user_password)) {
+                    if (!Hash::check($user_password_old, Auth::user()->password)) {
                         $fail('Mật khẩu chưa đúng');
                     }
                 },

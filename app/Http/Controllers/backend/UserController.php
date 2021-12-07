@@ -44,7 +44,7 @@ class UserController extends Controller
         
         $data->user_name = $request->user_name;
         $data->user_email = $request->user_email;
-        $data->user_password = bcrypt($request->user_password);
+        $data->password = bcrypt($request->user_password);
         $data->role_id = $request->role_id;
 
         if($data->save()){
@@ -107,9 +107,9 @@ class UserController extends Controller
     //Xửa lý đăng nhập
     public function postLogin(Request $request){
         $user_email = $request->user_email;
-        $user_password = $request->user_password;
+        $password = $request->user_password;
 
-        if(Auth::attempt(['user_email' => $user_email, 'user_password' => $user_password])){
+        if(Auth::attempt(['user_email' => $user_email, 'password' => $password])){
             return redirect('admin/dashboard')->with('msgSuccess', 'Đăng nhập thành công');
         }
         else{
@@ -151,7 +151,7 @@ class UserController extends Controller
         $data = UserModel::find($dataUser->user_id);
 
         $data->user_name = $request->user_name;
-        $data->user_password = bcrypt($request->user_password);
+        $data->password = bcrypt($request->user_password);
         
         if($data->save()){
             return redirect('admin/profile/show')->with('msgSuccess', 'Cập nhật thông tin thành công');

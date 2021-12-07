@@ -80,7 +80,7 @@ class CustomerController extends Controller
 
         $data->user_name = $request->user_name;
         $data->user_email = $request->user_email;
-        $data->user_password = bcrypt($request->user_password);
+        $data->password = bcrypt($request->user_password);
         $data->role_id = 3;
 
         if($data->save()){
@@ -117,7 +117,7 @@ class CustomerController extends Controller
             'user_password_old' => [
                 'required',
                 function ($attribute, $user_password_old, $fail) {
-                    if (!Hash::check($user_password_old, Auth::user()->user_password)) {
+                    if (!Hash::check($user_password_old, Auth::user()->password)) {
                         $fail('Mật khẩu chưa đúng');
                     }
                 },
@@ -140,7 +140,7 @@ class CustomerController extends Controller
         }
 
         $data->user_name = $request->user_name;
-        $data->user_password = bcrypt($request->user_password);
+        $data->password = bcrypt($request->user_password);
 
         if($data->save()){
             return redirect('customer/profile')->with('msgSuccess', 'Đổi thông tin thành công');
