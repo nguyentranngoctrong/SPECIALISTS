@@ -36,6 +36,7 @@ use RealRashid\SweetAlert\Facades\Alert;//dùng sweet alert
 |
 */
 
+//Route handle page main
 Route::get('/', [PageController::class, 'index']);
 Route::get('/home', [PageController::class, 'index']);
 Route::get('/shop', [PageController::class, 'shop']);
@@ -86,6 +87,7 @@ Route::prefix('customer')->middleware('HandleLoginCustomer')->group(function () 
     Route::get('/wishlist', [CustomerController::class, 'customerWishList']);
 });
 
+//Route handle wish list, comment, search
 Route::post('/handle-wishlist', [CustomerController::class, 'handleWishList']);
 Route::post('/add-comment-customer', [CustomerController::class, 'addCommentUser']);
 Route::post('/get-data-search', [CustomerController::class, 'getDataSearch']);
@@ -96,7 +98,7 @@ Route::post('/admin', [UserController::class, 'postLogin']);
 
 
 
-
+//Route prefix admin, middleware login admin
 Route::prefix('admin')->middleware('handleLoginAdmin')->group(function () {
     //Route dashboard
     Route::get('/dashboard', [DashboardController::class, 'index']);
@@ -182,13 +184,21 @@ Route::prefix('admin')->middleware('handleLoginAdmin')->group(function () {
     Route::delete('/posts/{id}', [PostController::class, 'destroy']);
 });
 
+//Route handle Filemanager
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
 
+//Route link storage with puplic
 Route::get('/linkstorage', function () {
     Artisan::call('storage:link');
+    echo "Link done !";
 });
 
 
+//Route clear cache, optimize
+Route::get('/optimize', function () {
+    Artisan::call('optimize');
+    echo "Optimize done !";
+});
 

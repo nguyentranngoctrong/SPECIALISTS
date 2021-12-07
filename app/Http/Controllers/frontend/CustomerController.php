@@ -48,7 +48,7 @@ class CustomerController extends Controller
             'user_password.required' => 'Mật khẩu không được để trống',
         ]);
 
-        if(Auth::attempt(['user_email' => $request->user_email, 'user_password' => $request->user_password])){
+        if(Auth::attempt(['user_email' => $request->user_email, 'password' => $request->user_password])){
             return redirect('customer/profile')->with('msgSuccess', 'Đăng nhập thành công');
         }
         else{
