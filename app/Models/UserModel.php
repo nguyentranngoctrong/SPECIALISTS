@@ -46,8 +46,4 @@ class UserModel extends Authenticatable
     {
         return $this->belongsTo(CityModel::class, 'user_city', 'city_id');
     }
-
-    public function getAuthPassword(){
-        return $this->user_password;
-    }
 }
