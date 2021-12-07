@@ -1,27 +1,28 @@
 <?php
 
-use RealRashid\SweetAlert\Facades\Alert;//dùng sweet alert
-
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\backend\ProductController;
-use App\Http\Controllers\backend\CategoryController;
-use App\Http\Controllers\backend\BrandController;
-use App\Http\Controllers\backend\UserController;
-use App\Http\Controllers\backend\OrderController;
-use App\Http\Controllers\backend\DashboardController;
-use App\Http\Controllers\backend\CommentController;
-use App\Http\Controllers\backend\ShipController;
-use App\Http\Controllers\backend\CouponController;
+
+use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\backend\PDFController;
 use App\Http\Controllers\backend\PostController;
-use App\Http\Controllers\backend\RequirementController;
+use App\Http\Controllers\backend\ShipController;
+use App\Http\Controllers\backend\UserController;
+use App\Http\Controllers\backend\BrandController;
+use App\Http\Controllers\backend\OrderController;
 use App\Http\Controllers\backend\SlideController;
 use App\Http\Controllers\frontend\BlogController;
-use App\Http\Controllers\frontend\PageController;
 use App\Http\Controllers\frontend\CartController;
-use App\Http\Controllers\frontend\CustomerController;
+use App\Http\Controllers\frontend\PageController;
+use App\Http\Controllers\backend\CouponController;
+use App\Http\Controllers\backend\CommentController;
+use App\Http\Controllers\backend\ProductController;
 use App\Http\Controllers\frontend\FilterController;
 use App\Http\Controllers\frontend\SocialController;
+use App\Http\Controllers\backend\CategoryController;
+use App\Http\Controllers\backend\DashboardController;
+use App\Http\Controllers\frontend\CustomerController;
+use App\Http\Controllers\backend\RequirementController;
+use RealRashid\SweetAlert\Facades\Alert;//dùng sweet alert
 
 
 /*
@@ -184,5 +185,10 @@ Route::prefix('admin')->middleware('handleLoginAdmin')->group(function () {
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
+
+Route::get('/linkstorage', function () {
+    Artisan::call('storage:link');
+});
+
 
 
