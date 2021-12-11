@@ -13,8 +13,10 @@ use App\Models\CommentModel;
 use App\Models\OrderModel;
 use App\Models\OrderdetailModel;
 use App\Models\PostModel;
+use App\Models\WishlistModel;
 use Carbon\Carbon;
 use DB;
+use Illuminate\Support\Facades\DB as FacadesDB;
 
 class DashboardController extends Controller
 {
@@ -40,11 +42,21 @@ class DashboardController extends Controller
     public function index(){
         $dataUserTop = $this->getDataUserTop();
         $dataShow = $this->getDataShow();
-        
+        $dataTagNav = $this->dataTagProduct();
+
         return view('backend.dashboard.dashboard',[
             'dataShow' => $dataShow,
             'dataUserTop' => $dataUserTop,
+            'dataTagNav' => $dataTagNav,
         ]);
+    }
+
+    public function dataTagProduct() {
+        $dataTonKho = ProductModel::orderBy('product_amount', 'DESC')->limit(10)->get();
+        $dataProductSell = OrderdetailModel::groupBy('product_id')->select('product_id', DB::raw('sum(order_detail_quantity) as qty'))->orderBy('qty', 'DESC')->limit(10)->get();
+        $dataProductLike = WishlistModel::groupBy('product_id')->select('product_id', DB::raw('count(product_id) as qty'))->orderBy('qty', 'DESC')->limit(10)->get();
+
+        return [$dataTonKho, $dataProductSell, $dataProductLike];
     }
 
     public function getDataShow(){

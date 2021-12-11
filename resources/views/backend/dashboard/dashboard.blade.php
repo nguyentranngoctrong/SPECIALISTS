@@ -136,10 +136,130 @@
         </div>
       </div>
     </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+        <ul class="nav nav-tabs" style="background: #9c27b0;" id="myTab" role="tablist">
+          <li class="nav-item text-center" style="width:33%;">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Sản phẩm tồn kho</a>
+          </li>
+          <li class="nav-item text-center" style="width:33%;">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Sản phẩm bán chạy</a>
+          </li>
+          <li class="nav-item text-center" style="width:33%;">
+            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Sản phẩm yêu thích</a>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr class="text-primary">
+                      
+                      <th>Sản phẩm</th>
+                      <th>Tồn kho</th>
+                      <th>Hình ảnh</th>
+                    </tr>
+                  </thead>
+                  @if ($dataTagNav[0] != null)
+                  <tbody>
+                    @foreach ($dataTagNav[0] as $product)
+                    <tr>
+                      <td>{{$product->product_name}}</td>
+                      <td>{{$product->product_amount}}</td>
+                      <td><img style="width: 50px" src="{{$product->product_image}}" alt=""></td>
+                    </tr>
+                    @endforeach
+                  </tbody>
+                  @endif
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr class="text-primary">
+                      <th>Sản phẩm</th>
+                      <th>Số lượt mua</th>
+                      <th>Giá mua</th>
+                      <th>Giá bán</th>
+                      <th>Hình ảnh</th>
+                    </tr>
+                  </thead>
+                  @if ($dataTagNav[1] != null)
+                  <tbody>
+                    @foreach ($dataTagNav[1] as $product)
+                    <tr>
+                      <td>{{$product->product->product_name}}</td>
+                      <td>{{$product->qty}}</td>
+                      <td>{{number_format($product->product->product_price_buy)}}</td>
+                      <td>{{number_format($product->product->product_price_sell)}}</td>
+                      <td><img style="width: 50px" src="{{$product->product->product_image}}" alt=""></td>
+                    </tr>
+                    @endforeach
+                  </tbody>
+                  @endif
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr class="text-primary">
+                      <th>Sản phẩm</th>
+                      <th>Số lượt yêu thích</th>
+                      <th>Hình ảnh</th>
+                    </tr>
+                  </thead>
+                  @if ($dataTagNav[2] != null)
+                  <tbody>
+                    @foreach ($dataTagNav[2] as $product)
+                    <tr>
+                      <td>{{$product->product->product_name}}</td>
+                      <td>{{$product->qty}}</td>
+                      <td><img style="width: 50px" src="{{$product->product->product_image}}" alt=""></td>
+                    </tr>
+                    @endforeach
+                  </tbody>
+                  @endif
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      </div>
+    </div>
   </div>
 @endsection
 
 @section('script')
+  <script>
+    $('#home-tab').click(function(){
+      $('#home').addClass('show active');
+      $('#profile').removeClass('show active');
+      $('#contact').removeClass('show active');
+    })
+    $('#profile-tab').click(function(){
+      $('#profile').addClass('show active');
+      $('#home').removeClass('show active');
+      $('#contact').removeClass('show active');
+    })
+    $('#contact-tab').click(function(){
+      $('#contact').addClass('show active');
+      $('#home').removeClass('show active');
+      $('#profile').removeClass('show active');
+    })
+  </script>
     <script>
       showChart()
       showPieCity()
