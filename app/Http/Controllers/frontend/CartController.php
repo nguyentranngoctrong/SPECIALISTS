@@ -34,7 +34,7 @@ class CartController extends Controller
         $this->cartService = $cartService;
         $dataCategory = CategoryModel::all();
         $dataBrand = BrandModel::all();
-        $this->data_seo = new SeoHelper('Kính chào quý khách', 'Bàn decor, gương decor, thảm decor, ghể decor, tranh decor', 'Long decor - Chuyên cung cấp những vật phẩm decor uy tín, chất lượng, giá rẻ', 'http://127.0.0.1:8000/cart');
+        $this->data_seo = new SeoHelper('Kính chào quý khách', 'Bàn decor, gương decor, thảm decor, ghể decor, tranh decor', 'VINANEON - Chuyên cung cấp những vật phẩm decor uy tín, chất lượng, giá rẻ', 'http://127.0.0.1:8000/cart');
         $this->middleware(function ($request, $next) {
             $this->cart = Session::get('cart');
             $this->coupon = Session::get('coupon');
@@ -121,8 +121,14 @@ class CartController extends Controller
         }
 
         $cart_total = $this->getTotal($this->cart);
+        $priceProduct = 0;
+        
+        foreach ($this->cart as $product) {
+            $priceProductSub = ProductModel::find($product['cart_id'])->product_price_buy * $product['cart_quantity'];
+            $priceProduct+= $priceProductSub;
+        }
     
-        $order_profit = Session::get('totalCart') - $cart_total;
+        $order_profit = Session::get('totalCart') - $priceProduct;
 
         $dataCity = CityModel::find($request->city_id);
         $dataDistrict = DistrictModel::find($request->district_id);
@@ -286,7 +292,7 @@ class CartController extends Controller
 
     //Hàm gửi mail sau khi đặt hàng thành công
     public function sendMailOrder($mail_to, $order,$dataUser, $orderShipping, $orderdetail, $coupon, $ship){
-        Mail::to($mail_to)->send(new OrderDone($order,$dataUser, $orderShipping, $orderdetail, $coupon, $ship));
+        Mail::to($mail_to)->send((new OrderDone($order,$dataUser, $orderShipping, $orderdetail, $coupon, $ship))->delay(60));
     }
     
     //Hàm xóa session sau khi đặt hàng thành công

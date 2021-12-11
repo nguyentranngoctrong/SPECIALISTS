@@ -22,6 +22,10 @@
                                 </form>
                             </div>
                         </div>
+                        @if (count($data) <= 0)
+                            <h5 class="text-center text-primary">Sản phẩm trống !!!</h5>
+                        @endif
+                        
                         <!-- Start Product View -->
                         <div class="row">
                             <div class="shop__grid__view__wrap">

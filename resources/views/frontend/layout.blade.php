@@ -124,7 +124,7 @@
                         <!-- Start Single Footer Widget -->
                         <div class="col-md-2 col-sm-6 col-xs-12 xmt-40">
                             <div class="footer">
-                                <h2 class="title__line--2">kHÔNG GIAN</h2>
+                                <h2 class="title__line--2">LOẠI SẢN PHẨM</h2>
                                 <div class="ft__inner">
                                     <ul class="ft__list">
                                         @foreach ($dataCategory as $item)

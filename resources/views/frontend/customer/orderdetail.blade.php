@@ -21,6 +21,73 @@
                     <div class="col-md-12">
                         {{$dataOrder->order_shipping}}
                     </div>
+                    <div class="col-md-12">
+                        Trạng thái: 
+                        @if ($dataOrder->order_status == 1)
+                                {{"Đang chờ xác nhận"}}
+                            @elseif ($dataOrder->order_status == 2)
+                                {{"Đã xác nhận đơn hàng"}}
+                            @elseif ($dataOrder->order_status == 3)
+                                {{"Đã đóng gói và gửi đến đơn vị vận chuyển"}}
+                            @elseif ($dataOrder->order_status == 4)
+                                {{"Đang giao hàng"}}
+                            @elseif ($dataOrder->order_status == 5)
+                                {{"Giao hàng thành công"}}
+                            @elseif ($dataOrder->order_status == 6)
+                                {{"Giao hàng thất bại"}}
+                            @endif
+                        <br>
+                        <div class="meter animate">
+                            <span style="width: 50%"><span></span></span>
+                        </div>
+                        <div class="progress">
+                            
+                            <div class="progress-bar" role="progressbar" style="border-radius: 30px;background: 
+                            @if ($dataOrder->order_status == 1)
+                                {{""}}
+                            @elseif ($dataOrder->order_status == 2)
+                                {{""}}
+                            @elseif ($dataOrder->order_status == 3)
+                                {{"yellow"}}
+                            @elseif ($dataOrder->order_status == 4)
+                                {{"blue"}}
+                            @elseif ($dataOrder->order_status == 5)
+                                {{"green"}}
+                            @elseif ($dataOrder->order_status == 6)
+                                {{"red"}}
+                            @endif
+                            ; width: 
+                            @if ($dataOrder->order_status == 1)
+                                {{"25%"}}
+                            @elseif ($dataOrder->order_status == 2)
+                                {{"50%"}}
+                            @elseif ($dataOrder->order_status == 3)
+                                {{"75%"}}
+                            @elseif ($dataOrder->order_status == 4)
+                                {{"75%"}}
+                            @elseif ($dataOrder->order_status == 5)
+                                {{"100%"}}
+                            @elseif ($dataOrder->order_status == 6)
+                                {{"100%"}}
+                            @endif
+                            " aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                            @if ($dataOrder->order_status == 1)
+                                {{"Đang chờ xác nhận"}}
+                            @elseif ($dataOrder->order_status == 2)
+                                {{"Đã xác nhận đơn hàng"}}
+                            @elseif ($dataOrder->order_status == 3)
+                                {{"Đã đóng gói và gửi đến đơn vị vận chuyển"}}
+                            @elseif ($dataOrder->order_status == 4)
+                                {{"Đang giao hàng"}}
+                            @elseif ($dataOrder->order_status == 5)
+                                {{"Giao hàng thành công"}}
+                            @elseif ($dataOrder->order_status == 6)
+                                {{"Giao hàng thất bại"}}
+                            @endif
+                            </div>
+                        </div>
+                        
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
@@ -36,7 +103,7 @@
                                 @foreach ($data as $item)
                                 <tr>
                                     <td>
-                                        <a style="font-size: 20px" href="shop/product/{{$item->product_id}}-{{Str::slug($item->product_name, '-')}}.html">{{$item->product->product_name ?? 'Sản phẩm'}}</a>
+                                        <a style="font-size: 20px" href="/shop/product/{{$item->product_id}}-{{Str::slug($item->product->product_name, '-')}}.html">{{$item->product->product_name}}</a>
                                         <br>
                                         <span>Số lượng: {{$item->order_detail_quantity}}</span><br>
                                         <span>Giá: {{number_format($item->order_detail_price)}}</span>

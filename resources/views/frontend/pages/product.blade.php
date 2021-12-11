@@ -262,8 +262,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
+                    
                     <div class="section__title--2 text-center">
+                        @if (count($dataProductCategory) > 0)
                         <h2 class="title__line">SẢN PHẨM LIÊN QUAN</h2>
+
+                        @endif
                     </div>
                 </div>
             </div>

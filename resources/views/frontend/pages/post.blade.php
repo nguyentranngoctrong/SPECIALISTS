@@ -49,11 +49,14 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="section__title--2 text-center">
+                        @if (count($dataBlog) > 0)
                         <h2 class="title__line">BÀI VIẾT KHÁC</h2>
+                        @endif
                     </div>
                 </div>
             </div>
             <div class="row">
+                
                 <div class="product__wrap clearfix">
                     @foreach ($dataBlog as $item)
                     <!-- Start Single Product -->

@@ -22,7 +22,7 @@
                         </div>
                         <div class="col-lg-6 col-sm-5 col-xs-12 col-md-5">
                             <div class="slide__thumb">
-                                <img src="{{$slide->image}}" alt="slider images">
+                                <img src="{{$slide->image}}" alt="slider images VINANEON">
                             </div>
                         </div>
                     </div>
@@ -64,7 +64,7 @@
     <section class="ftr__product__area ptb--50">
         <div class="container-fluid">
             <center>
-                <a href="{{$dataBanner->target}}"><img style="max-width: 100%" src="{{$dataBanner->image}}" alt=""></a>
+                <a href="{{$dataBanner->target}}"><img style="max-width: 100%" src="{{$dataBanner->image}}" alt="{{$dataBanner->title}}"></a>
             </center>
         </div>
     </section>
@@ -104,7 +104,7 @@
                     <div class="col-lg-6 col-md-6 single__tes">
                         <div class="testimonial">
                             <div class="testimonial__thumb">
-                                <img style="width:90px" src="images_product/{{$item->product->product_image}}" alt="testimonial images">
+                                <img style="width:90px" src="{{$item->product->product_image}}" alt="{{$item->product->product_name}}">
                             </div>
                             <div class="testimonial__details">
                                 <h4><a href="/shop/product/{{$item->product_id}}-{{Str::slug($item->product->product_name)}}">{{$item->user->user_name}}</a></h4>
@@ -164,7 +164,7 @@
                                     </ul>
                                 </div>
                                 <div class="fr__product__inner">
-                                    <h4><a href="/shop/product/{{$item->product->product_id}}">{{$item->product->product_name}}</a></h4>
+                                    <h4><a href="/shop/product/{{$item->product->product_id}}-{{Str::slug($item->product->product_name, '-')}}.html"></a></h4>
                                     <ul class="fr__pro__prize">
                                         <li class="old__prize">{{number_format($item->product->product_price_sell)}} VNĐ</li>
                                         <li>{{number_format($product_price_sale)}} VNĐ</li>

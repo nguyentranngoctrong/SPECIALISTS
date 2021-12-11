@@ -12,6 +12,7 @@ use App\Models\UserModel;
 use App\Models\CommentModel;
 use App\Models\OrderModel;
 use App\Models\OrderdetailModel;
+use App\Models\PostModel;
 use Carbon\Carbon;
 use DB;
 
@@ -50,16 +51,13 @@ class DashboardController extends Controller
         $dataUser = UserModel::where('role_id', 3)->count();
         $dataProduct = ProductModel::count();
         $dataOrder = OrderModel::where('created_at', $this->getToday())->count();
+        $dataPost = PostModel::count();
 
-        return $dataShow = [$dataUser, $dataProduct, $dataOrder];
+        return $dataShow = [$dataUser, $dataProduct, $dataOrder, $dataPost];
     }
 
     public function getDataUserTop(){
         $dataUser = OrderModel::groupBy('user_id')->select('user_id', DB::raw('sum(order_total) as total'))->orderBy('total', 'DESC')->limit(10)->get();
-        // foreach($dataUser as $item){
-        //     echo $item->user->user_id;
-        //     echo $item->total;
-        // }
         return $dataUser;
     }
 

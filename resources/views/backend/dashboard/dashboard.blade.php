@@ -24,7 +24,7 @@
           </div>
           <div class="card-footer">
             <div class="stats">
-              <a href="admin/users">Quản lý sản phẩm</a>
+              <a href="admin/products">Quản lý sản phẩm</a>
             </div>
           </div>
         </div>
@@ -37,7 +37,7 @@
           </div>
           <div class="card-footer">
             <div class="stats">
-              <a href="admin/users">Quản lý đơn hàng</a>
+              <a href="admin/orders">Quản lý đơn hàng</a>
             </div>
           </div>
         </div>
@@ -45,12 +45,12 @@
       <div class="col-lg-3 col-md-6 col-sm-6">
         <div class="card card-stats">
           <div class="card-header">
-            <h3 class="card-title">Bài viết: 0
+            <h3 class="card-title">Bài viết: {{$dataShow[3]}}
             </h3>
           </div>
           <div class="card-footer">
             <div class="stats">
-              <a href="admin/users">Quản lý bài viết</a>
+              <a href="admin/posts">Quản lý bài viết</a>
             </div>
           </div>
         </div>
