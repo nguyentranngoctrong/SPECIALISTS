@@ -185,6 +185,8 @@ class CustomerController extends Controller
         ],[
             'user_addres.required' => 'Địa chỉ không được để trống',
             'user_phone.required' => 'Số điện thoại không được để trống',
+            'user_phone.min' => 'Số điện thoại sai định dạng',
+            'user_phone.max' => 'Số điện thoại sai định dạng',
         ]);
         $data = UserModel::find(Auth::id());
         $data->user_phone = $request->user_phone;
