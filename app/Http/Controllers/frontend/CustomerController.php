@@ -179,6 +179,13 @@ class CustomerController extends Controller
     }
 
     public function customerChangeAddres(Request $request){
+        $request->validate([
+            'user_phone' => 'required|min:10|max:10',
+            'user_addres' => 'required',
+        ],[
+            'user_addres.required' => 'Địa chỉ không được để trống',
+            'user_phone.required' => 'Số điện thoại không được để trống',
+        ]);
         $data = UserModel::find(Auth::id());
         $data->user_phone = $request->user_phone;
         $data->user_addres = $request->user_addres;
