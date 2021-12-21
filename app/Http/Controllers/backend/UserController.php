@@ -44,7 +44,7 @@ class UserController extends Controller
         
         $data->user_name = $request->user_name;
         $data->user_email = $request->user_email;
-        $data->password = bcrypt($request->user_password);
+        $data->password = bcrypt($request->user_password);//bcrypt mã hóa mật khẩu trước 
         $data->role_id = $request->role_id;
 
         if($data->save()){

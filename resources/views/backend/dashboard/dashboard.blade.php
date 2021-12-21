@@ -120,7 +120,7 @@
                 <tbody>
                   @foreach ($dataUserTop as $item)
                   <tr>
-                    <td>{{$item->user->user_name}}</td>
+                    <td>{{$item->user->user_name ?? ''}}</td>
                     <td>{{number_format($item->total)}} VNĐ</td>
                   </tr>
                   @endforeach
