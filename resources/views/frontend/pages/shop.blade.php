@@ -92,7 +92,7 @@
                         <!-- End Category Area -->
                         <!-- Start Category Area -->
                         <div class="htc__category">
-                            <h4 class="title__line--4">Không Gian</h4>
+                            <h4 class="title__line--4">Đặc Sản</h4>
                             <ul class="ht__cat__list">
                                 @foreach ($dataBrand as $item)
                                 <li><a href="/shop/brand/{{$item->brand_id}}">{{$item->brand_name}}</a></li>
@@ -118,7 +118,7 @@
                                             Giảm: {{$item->product_sale}}%
                                         </ul>
                                         <ul  class="pro__prize">
-                                            <li>{{number_format($item->product_price_sell)}} VNĐ</li>
+                                            <li>{{number_format($item->product_price_sell)}}</li>
                                         </ul>
                                     </div>
                                 </div>

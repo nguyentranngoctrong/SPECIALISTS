@@ -1,5 +1,5 @@
 <?php
-
+// mã giảm giá
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;

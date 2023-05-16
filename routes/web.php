@@ -22,7 +22,7 @@ use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\frontend\CustomerController;
 use App\Http\Controllers\backend\RequirementController;
-use RealRashid\SweetAlert\Facades\Alert;//dùng sweet alert
+use RealRashid\SweetAlert\Facades\Alert; //dùng sweet alert
 
 
 /*
@@ -202,3 +202,6 @@ Route::get('/optimize', function () {
     echo "Optimize done !";
 });
 
+Route::post('/payment', 'PaymentController@createPayment')->name('payment.createPayment');
+Route::get('/payment-result', 'PaymentController@getPaymentResult')->name('payment.getPaymentResult');
+Route::get('/payment-cancel', 'PaymentController@getPaymentCancel')->name('payment.getPaymentCancel');

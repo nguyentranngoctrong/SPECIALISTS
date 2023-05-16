@@ -44,7 +44,7 @@
                                     <form>
                                         @csrf
                                         <input type="hidden" class="id_delete" value="{{$item->id}}">
-                                        <a class="dropdown-item button-delete" href="#">Xóa</a>
+                                        <a class="dropdown-item button-delete" href="#" data-id="{{ $item->id }}">Xóa</a>
                                     </form>
                                 </div>
                             </div>
@@ -68,7 +68,7 @@
 @endsection
 
 @section('script')
-    <script>
+    <!-- <script>
         $('.button-delete').click(function (e) {
             
         e.preventDefault();
@@ -99,5 +99,39 @@
             }
         });
         })
+    </script> -->
+    <script>
+        $('.button-delete').click(function (e) {
+    e.preventDefault();
+
+    // Lấy ID lời nhắn từ data-attribute
+    var requirement_id = $(this).data('id');
+
+    swal({
+        title: "Bạn có chắc sẽ xóa lời nhắn này",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+
+                // Sử dụng ID lời nhắn lấy được ở trên
+                $.ajax({
+                    type: 'DELETE',
+                    url: 'admin/requirements/'+ requirement_id,
+                    data: {
+                        '_token': $('input[name=_token]').val(),
+                    },
+                    success: function (response) {
+                        swal(response.msgSuccess, {
+                            icon: "success",
+                        })
+                        .then((willDelete) => location.reload())
+                    }
+                })
+            }
+        });
+})
     </script>
 @endsection

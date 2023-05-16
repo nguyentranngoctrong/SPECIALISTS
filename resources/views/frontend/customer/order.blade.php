@@ -21,18 +21,29 @@
                         <table class="table">
                             <thead>
                                 <tr>
+                                    <th>Mã Đơn Hàng</th>
                                     <th>Ngày đặt</th>
                                     <th>Tống giá</th>
                                     <th>Trạng thái</th>
+                                    
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($data as $item)
                                 <tr>
+                                    <td>
+                                        <form  action="/customer/deleteorder/{{$item->order_id}}">
+                                            @csrf
+                                            {{$item->order_id}}
+                                            <!-- <input type="" class="id_delete" value="{{$item->order_id}}"> -->
+                                            <!-- <td><a class="btn button-delete" href="/customer/orderdetail/{{$item->order_id}}">Xóa đơn hàng</a></td> -->
+                                        </form>
+                                    </td>
                                     <td>{{date('d/m/Y',strtotime($item->created_at))}}</td>
                                     <td>{{number_format($item->order_total)}}</td>
                                     <td>{!! \App\Helpers\OrderStatusHelper::Status($item->order_status) !!}</td>
+                                    
                                     <td><a class="btn btn-primary" href="/customer/orderdetail/{{$item->order_id}}">Xem chi tiết</a></td>
                                 </tr>
                                 @endforeach
@@ -45,3 +56,39 @@
         </div>
     </div>
 @endsection
+
+<!-- @section('script')
+    <script>
+        $('.button-delete').click(function (e) {
+            
+        e.preventDefault();
+        var order_id = $('.id_delete').val();
+        var token = $('input[name=_token]').val();
+
+        swal({
+            title: "Bạn có chắc sẽ xóa hóa đơn này này",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+            })
+        .then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+                    type: 'DELETE',
+                    url: 'admin/orders/'+ order_id,
+                    data: {
+                        '_token': token,
+                        'id': order_id,
+                    },
+                    success: function (response) {
+                        swal(response.msgSuccess, {
+                            icon: "success",
+                        })
+                        .then((willDelete) => location.reload())
+                    }
+                })
+            }
+        });
+        })
+    </script>
+@endsection -->

@@ -96,9 +96,9 @@
                   </div>
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label class="bmd-label-floating">Không gian decor</label>
+                      <label class="bmd-label-floating">Tỉnh/Thành Phố</label>
                       <select name="brand_id" class="form-control">
-                        <option value="">---Chọn Không Gian---</option>
+                        <option value="">---Chọn Tỉnh/Thành Phố---</option>
                         @foreach ($dataBrand as $item)
                           <option value="{{$item->brand_id}}">{{$item->brand_name}}</option>
                         @endforeach
@@ -161,7 +161,7 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label class="bmd-label-floating">Mô tả</label>
+                    <label class="bmd-label-floating">Thuộc tính</label>
                     <textarea name="product_attribute" id="my-editor-2" cols="30" rows="10"  class="ckeditor">{{old('product_attribute')}}</textarea>
                     @error('product_attribute')
                       <span class="text-danger">{{$message}}</span>

@@ -40,7 +40,7 @@
                                     <form>
                                         @csrf
                                         <input type="hidden" class="id_delete" value="{{$item->order_id}}">
-                                        <a class="dropdown-item button-delete" href="#">Xóa</a>
+                                        <a class="dropdown-item button-delete" href="#" data-order-id="{{ $item->order_id }}">Xóa</a>
                                     </form>
                                 </div>
                             </div>
@@ -64,7 +64,7 @@
 @endsection
 
 @section('script')
-    <script>
+    <!-- <script>
         $('.button-delete').click(function (e) {
             
         e.preventDefault();
@@ -96,5 +96,38 @@
             }
         });
         })
+    </script> -->
+    <<script>
+    $('.button-delete').click(function (e) {
+    e.preventDefault();
+
+    // Lấy ID đơn hàng từ thuộc tính data-order-id của nút xóa
+    var order_id = $(this).data('order-id');
+    
+    swal({
+        title: "Bạn có chắc sẽ xóa hóa đơn này này",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+    .then((willDelete) => {
+        if (willDelete) {
+            $.ajax({
+                type: 'DELETE',
+                url: 'admin/orders/'+ order_id,
+                data: {
+                    '_token': $('input[name=_token]').val(),
+                },
+                success: function (response) {
+                    swal(response.msgSuccess, {
+                        icon: "success",
+                    })
+                    .then((willDelete) => location.reload())
+                }
+            })
+        }
+    });
+})
+
     </script>
 @endsection

@@ -84,8 +84,8 @@
                                 <li>Giảm {{$data->product_sale}}%</li> <br>
                             </ul>
                             <ul  class="pro__prize">
-                                
-                                <li class="old__prize">{{number_format($data->product_price_sell)}} VNĐ</li>
+                                <!-- <li class="old__prize" style="text-decoration: line-through;">{{number_format($data->product_price_sell)}} VNĐ</li> -->
+                                <!-- <li class="old__prize">{{number_format($data->product_price_sell)}} VNĐ</li> -->
                                 <li>{{number_format($product_price_sale = $data->product_price_sell - ($data->product_price_sell/100 * $data->product_sale))}} VNĐ</li>
                             </ul>
                             <br>
@@ -118,8 +118,9 @@
                                         <li style="display: flex;">
                                             @if ($data->product_amount != 0)
                                             <button class="add_to_cart btn" style="width:200px; margin-right: 20px"  data-id="{{$item->product_id}}" type="button">Thêm Vào Giỏ Hàng <i class="icon-handbag icons"></i></button>
+                                            <!-- <button class="handle_wishlist" style="width:200px; margin-right: 20px"  data-id="{{$item->product_id}}" type="button"> Yêu thích <i class="icon-heart icons"></i></i></button> -->
                                             @endif
-                                            {{-- <a style="width:200px" href="/checkout">mua ngay</a> --}}
+                                            {{-- <a style="width:200px" href="/checkout">Mua ngay</a> --}}
                                         </li>
                                     </ul>
                                 </div>
@@ -130,26 +131,27 @@
                                         <li><a href="/shop/category/{{$data->category_id}}">{{$data->category->category_name}}</a></li>
                                     </ul>
                                 </div>
+                                <!-- Giao diện trong sản phẩm -->
                                 <div class="sin__desc align--left">
-                                    <p><span>Không gian decor:</span></p>
+                                    <p><span>Đặc sản:</span></p>
                                     <ul class="pro__cat__list">
                                         <li><a href="/shop/brand/{{$data->brand_id}}">{{$data->brand->brand_name}}</a></li>
                                     </ul>
                                 </div>
                                 <div class="sin__desc product__share__link">
-                                    <p><span>Share this:</span></p>
+                                    <p><span>Liên hệ:</span></p>
                                     <ul class="pro__share">
-                                        <li><a href="#" target="_blank"><i class="icon-social-twitter icons"></i></a></li>
+                                        <!-- <li><a href="#" target="_blank"><i class="icon-social-twitter icons"></i></a></li> -->
 
-                                        <li><a href="#" target="_blank"><i class="icon-social-instagram icons"></i></a></li>
+                                        <li><a href="https://www.instagram.com/ntn.trong/?fbclid=IwAR0eEDBi7uyEq7Y6-Ap3vSZKe2pB9Ox-NLCauQ5yB6kCstSnt_TxuqrnH5Q" target="_blank"><i class="icon-social-instagram icons"></i></a></li>
 
-                                        <li><a href="https://www.facebook.com/Furny/?ref=bookmarks" target="_blank"><i class="icon-social-facebook icons"></i></a></li>
+                                        <li><a href="https://www.facebook.com/profile.php?id=100090554097338" target="_blank"><i class="icon-social-facebook icons"></i></a></li>
 
-                                        <li><a href="#" target="_blank"><i class="icon-social-google icons"></i></a></li>
+                                        <li><a href="http://127.0.0.1:8000/contact" target="_blank"><i class="icon-social-google icons"></i></a></li>
 
-                                        <li><a href="#" target="_blank"><i class="icon-social-linkedin icons"></i></a></li>
+                                        <!-- <li><a href="#" target="_blank"><i class="icon-social-linkedin icons"></i></a></li> -->
 
-                                        <li><a href="#" target="_blank"><i class="icon-social-pinterest icons"></i></a></li>
+                                        <!-- <li><a href="#" target="_blank"><i class="icon-social-pinterest icons"></i></a></li> -->
                                     </ul>
                                 </div>
                             </div>

@@ -50,7 +50,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="bmd-label-floating">Không gian:</label>
+                                    <label class="bmd-label-floating">Tỉnh/Thành Phố:</label>
                                     <span> {{ $data->brand->brand_name}}</span>
 
                                 </div>

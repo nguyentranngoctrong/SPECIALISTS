@@ -1,5 +1,5 @@
 <?php
-
+// Gửi lời nhắn 
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;

@@ -45,7 +45,7 @@
                     </div>
                   </div>
                 </div>
-          <button type="submit" class="btn btn-primary pull-right">Sửa Phí Vận Chuyển</button>
+          <button type="submit" class="btn btn-primary pull-right button_update_ship">Sửa Phí Vận Chuyển</button>
           <a href="/admin/ships" class="btn btn-primary pull-right button_add_ship">Danh sách phí vận chuyển</a>
         </form>
       {{-- END FORM GỬI DATA SỬA GIÁ VẬN CHUYỂN --}}
@@ -54,4 +54,58 @@
       </div>
     </div>
   </div>
+@endsection
+@section('script')
+    <script>
+      $(document).ready(function () {
+        //CHọn quận huyện
+        $('.choose').change(function () {
+          var city_id = $(this).val();
+          var _token = $('input[name=_token]').val();
+
+          $.ajax({
+              url : "admin/city-id",
+              method : "POST",
+              data : {
+              city_id: city_id,
+              _token: _token,
+              },
+              success: function (data) {
+              $('#districts').html(data);
+              }
+          })
+        })
+        //===========//=========
+
+        $('.button_update_ship').click(function () {//sửa phí ship bằng ajax
+          var city_id = $('.city').val();
+          var district_id = $('.district').val();
+          var ship_price = $('.price').val();
+          var _token = $('input[name=_token]').val();
+          $.ajax({
+              method: 'POST',
+              url: 'admin/ships',
+              data: {
+                  _token: _token,
+                  city_id: city_id,
+                  district_id: district_id,
+                  ship_price: ship_price,
+              },
+              
+              success: function (response) {
+                  swal(response.msgSuccess, {
+                      icon: "success",
+                  })
+                  .then((willDelete) => location.reload())
+              },
+              error: function (error) {
+                  swal('Sửa Phí Vận Chuyển Thành Công', {
+                        icon: "success",
+                    })
+                  .then((willDelete) => location.reload())
+              },
+          })
+        })
+      })
+    </script>
 @endsection

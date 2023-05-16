@@ -1,5 +1,5 @@
 <?php
-
+// thêm sản phẩm
 namespace App\Http\Controllers\backend;
 
 use App\Models\BrandModel;

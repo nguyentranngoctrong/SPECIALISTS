@@ -1,6 +1,6 @@
 <?php
 namespace App\Traits;
-
+// Xử lý ảnh
 use App\Models\ProductModel;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
@@ -16,9 +16,9 @@ trait ImageUploadTrait
             //Tạo tên ảnh mới
             $imageName = Str::random(10) . "_" . $image->getClientOriginalName();
 
-            //Upload ảnh vào store với path public/' . $foderName, $imageName
-            $path = $request->file($fieldName)->storeAs('public/' . $foderName, $imageName);
-
+            // //Upload ảnh vào store với path public/' . $foderName, $imageName
+            // $path = $request->file($fieldName)->storeAs('public/' . $foderName, $imageName);
+            $path = $request->file($fieldName)->storeAs('public/' . $foderName, $image->getClientOriginalName());    
             $dataPath = Storage::url($path);
 
             return $dataPath;
@@ -32,7 +32,8 @@ trait ImageUploadTrait
         $dataPath = [];
         if ($request->hasFile($fieldName)) {
             foreach ($request->$fieldName as $item) {
-                $imageName = Str::random(10) . "_" . $item->getClientOriginalName();
+                // bỏ chuổi id  Str::random(10) . "_" .
+                $imageName = $item->getClientOriginalName();
                 $path = $item->storeAs('public/' . $foderName, $imageName);
 
                 $dataPath[$imageName] = Storage::url($path);
@@ -41,3 +42,17 @@ trait ImageUploadTrait
         return $dataPath;
     }
 }
+//     public function handleUploadImageProduct($request, $fieldName, $foderName)
+//     {
+//         $dataPath = [];
+//         if ($request->hasFile($fieldName)) {
+//             foreach ($request->$fieldName as $item) {
+//                 $imageName = Str::random(10) . "_" . $item->getClientOriginalName();
+//                 $path = $item->storeAs('public/' . $foderName, $imageName);
+
+//                 $dataPath[$imageName] = Storage::url($path);
+//             }
+//         }
+//         return $dataPath;
+//     }
+// }

@@ -1,6 +1,10 @@
+<head>
+  <script src="https://kit.fontawesome.com/939aaac269.js" crossorigin="anonymous"></script>
+
+</head>
 <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
     <div class="logo"><a href="/" class="simple-text logo-normal">
-        VINANEON
+        Đặc Sản
       </a></div>
     <div class="sidebar-wrapper">
       <ul class="nav">
@@ -18,8 +22,8 @@
               echo $activeCategory;
           @endphp">
           <a class="nav-link" href="admin/categorys">
-            <i class="material-icons">content_paste</i>
-            <p>Loại Sản Phẩm</p>
+            <i class="fa-solid fa-list"></i>
+            <p>Quản lý Loại Sản Phẩm</p>
           </a>
         </li>
         <li class="nav-item @php
@@ -27,8 +31,8 @@
               echo $activeBrand;
           @endphp">
           <a class="nav-link" href="admin/brands">
-            <i class="material-icons">content_paste</i>
-            <p>Không Gian Decor</p>
+            <i class="fa fa-city"></i>
+            <p>Tỉnh/Thành Phố</p>
           </a>
         </li>
         <li class="nav-item @php
@@ -37,7 +41,7 @@
           @endphp">
           <a class="nav-link" href="admin/products">
             <i class="material-icons">content_paste</i>
-            <p>Sản Phẩm</p>
+            <p>Quản lý Sản Phẩm</p>
           </a>
         </li>
         <li class="nav-item @php
@@ -45,8 +49,8 @@
               echo $activePost;
           @endphp">
           <a class="nav-link" href="admin/posts">
-            <i class="material-icons">content_paste</i>
-            <p>Bài Viết</p>
+            <i class="fa-sharp fa-solid fa-pencil"></i>
+            <p>Quản lý Bài Viết</p>
           </a>
         </li>
         @if (Auth::user()->role_id == 1)
@@ -56,8 +60,8 @@
             echo $activeUser;
             @endphp">
             <a class="nav-link" href="admin/users">
-              <i class="material-icons">content_paste</i>
-              <p>Người Dùng</p>
+              <i class="fa-solid fa-users"></i>
+              <p>Quản lý Người Dùng</p>
             </a>
           </li>
         @endif
@@ -67,8 +71,8 @@
               echo $activeOrder;
           @endphp">
           <a class="nav-link" href="admin/orders">
-            <i class="material-icons">content_paste</i>
-            <p>Hóa Đơn</p>
+            <i class="fa-solid fa-money-bill"></i>
+            <p>Quản lý đơn hàng</p>
           </a>
         </li>
         <li class="nav-item @php
@@ -76,8 +80,8 @@
               echo $activeComment;
           @endphp">
           <a class="nav-link" href="admin/comments">
-            <i class="material-icons">content_paste</i>
-            <p>Bình Luận</p>
+            <i class="fa-solid fa-thumbs-up"></i>
+            <p>Quản lý Bình Luận</p>
           </a>
         </li>
         <li class="nav-item @php
@@ -85,7 +89,7 @@
               echo $activeShip;
           @endphp">
           <a class="nav-link" href="admin/ships">
-            <i class="material-icons">content_paste</i>
+            <i class="fa-solid fa-truck-fast"></i>
             <p>Phí Vận Chuyển</p>
           </a>
         </li>
@@ -94,7 +98,7 @@
               echo $activeCoupon;
           @endphp">
           <a class="nav-link" href="admin/coupons">
-            <i class="material-icons">content_paste</i>
+            <i class="fa-solid fa-gifts"></i>
             <p>Mã Giảm Giá</p>
           </a>
         </li>
@@ -103,8 +107,8 @@
               echo $activeSlide;
           @endphp">
           <a class="nav-link" href="admin/slides">
-            <i class="material-icons">content_paste</i>
-            <p>Slide/Banner</p>
+            <i class="fa-brands fa-slideshare"></i>
+            <p>Quản lý Slide/Banner</p>
           </a>
         </li>
         <li class="nav-item @php
@@ -112,8 +116,8 @@
               echo $activeRequirement;
           @endphp">
           <a class="nav-link" href="admin/requirements">
-            <i class="material-icons">content_paste</i>
-            <p>Lời Nhắn</p>
+            <i class="fa-regular fa-message"></i>
+            <p>Phản Hồi/Lời Nhắn</p>
           </a>
         </li>
       </ul>

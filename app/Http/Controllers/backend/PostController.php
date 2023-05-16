@@ -1,5 +1,5 @@
 <?php
-
+// bài viết
 namespace App\Http\Controllers\backend;
 
 use App\Models\PostModel;

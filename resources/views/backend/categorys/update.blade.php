@@ -39,7 +39,7 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label class="bmd-label-floating">Description</label>
+                      <label class="bmd-label-floating">Mô tả</label>
                       <input type="text" name="category_description" value="{{$data->category_description}}" class="form-control">
                       @error('category_description')
                           <span class="text-danger">{{$message}}</span>

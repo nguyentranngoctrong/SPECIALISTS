@@ -38,6 +38,7 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="">
+                    
                     <label class="bmd-label-floating">Hình ảnh<span class="text-danger">*</span></label>
                     <input type="file" id="product_image" name="product_image" onchange="chosseFile(this)" class="form-control" accept="image/*">
                     @error('product_image')

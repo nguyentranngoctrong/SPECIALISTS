@@ -1,5 +1,5 @@
 <?php
-
+// đăng nhập
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;

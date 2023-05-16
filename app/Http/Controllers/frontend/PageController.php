@@ -1,5 +1,5 @@
 <?php
-
+// Tìm kiếm shop 
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
@@ -26,7 +26,7 @@ class PageController extends Controller
         $priceMin = ProductModel::min('product_price_sell');
         $dataCategory = CategoryModel::all();
         $dataBrand = BrandModel::all();
-        $this->data_seo = new SeoHelper('Kính chào quý khách', 'Bàn decor, gương decor, thảm decor, ghể decor, tranh decor', 'VINANEON - Chuyên cung cấp những vật phẩm decor uy tín, chất lượng, giá rẻ', 'http://127.0.0.1:8000/');
+        $this->data_seo = new SeoHelper('Kính chào quý khách', 'Đặc sản vùng miền', 'Đặc sản vùng miền - Chuyên cung cấp những món ăn, đặc sản, chất lượng, giá rẻ', 'http://127.0.0.1:8000/');
         view()->share([
             'dataCategory' => $dataCategory, 
             'dataBrand' => $dataBrand, 
@@ -59,7 +59,7 @@ class PageController extends Controller
     }
 
     public function shop(){
-        $this->data_seo = new SeoHelper('Cửa hàng','Bàn decor, gương decor, thảm decor, ghể decor, tranh decor', 'VINANEON - Chuyên cung cấp những vật phẩm decor uy tín, chất lượng, giá rẻ', 'http://127.0.0.1:8000/shop');
+        $this->data_seo = new SeoHelper('Cửa hàng','Bánh/Kẹo/Mứt, Khô các loại, Sức khỏe/Trà, Nem/Chả/Lạp, Rau/Gạo/Nấm, Rượu các loại Gia Vị', 'VINANEON - Chuyên cung cấp những vật phẩm decor uy tín, chất lượng, giá rẻ', 'http://127.0.0.1:8000/shop');
         $dataProductSales = ProductModel::orderBy('product_sale', 'DESC')->limit(4)->get();
 
         if($this->checkFilter()){

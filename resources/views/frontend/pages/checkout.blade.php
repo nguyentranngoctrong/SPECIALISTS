@@ -145,10 +145,11 @@
                             </div>
                             <div class="order-details__count__single">
                                 <h5>Mã giảm giá</h5>
-                                <span class="price" id="coupon_cart">{{$coupon_cart}}</span>
+                                <span class="price" id="coupon_cart">Giảm {{$coupon_cart}}
+                                </span>
                             </div>
                             <div class="order-details__count__single">
-                                <h5>Phí Vận Chuyển</h5>
+                                <h5>Phí Vận Chuyển +</h5>
                                 <span class="price" id="shipping">0</span>
                             </div>
                         </div>
@@ -220,8 +221,8 @@
                             },
                             success: function(data) {
                                 
-                                $('#shipping').text(data[0].toLocaleString('ja-JP')+ ''+ ' VNĐ')
-                                $('#cart_totals').text(data[1].toLocaleString('ja-JP')+ ''+ ' VNĐ')
+                                $('#shipping').text(data[0].toLocaleString('ja-JP')+ ''+ 'VND')
+                                $('#cart_totals').text(data[1].toLocaleString('ja-JP')+ ''+ 'VND')
                                 $('input[name=district_id]').val(district_id)
 
                             }

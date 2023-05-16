@@ -15,14 +15,14 @@
                                 <div class="slider__inner">
                                     <h1>{{$slide->slide_title}}</h1>
                                     <div class="cr__btn">
-                                        <a href="{{$slide->target}}">View Now</a>
+                                        <a href="{{$slide->target}}">Xem ngay</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6 col-sm-5 col-xs-12 col-md-5">
                             <div class="slide__thumb">
-                                <img src="{{$slide->image}}" alt="slider images VINANEON">
+                                <img src="{{$slide->image}}" alt="slider images của chúng tôi">
                             </div>
                         </div>
                     </div>
@@ -98,9 +98,15 @@
     <section class="htc__testimonial__area bg__cat--4">
         <div class="container">
             <div class="row">
+                <div class="col-xs-12">
+                    <div class="section__title--2 text-center">
+                        <h2 class="title__line">TOP BÌNH LUẬN</h2>
+                     </div>
+                </div>
                 <div class="ht__testimonial__activation clearfix">
                     @foreach ($dataComment as $item)
                     <!-- Start Single Testimonial -->
+                    
                     <div class="col-lg-6 col-md-6 single__tes">
                         <div class="testimonial">
                             <div class="testimonial__thumb">

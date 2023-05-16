@@ -416,6 +416,7 @@ nav.off__canvars--menu ul li ul li a:hover {
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
+  width: 800px;
 }
 
 .main__menu li.drop ul.dropdown.mega_dropdown li:hover > a {

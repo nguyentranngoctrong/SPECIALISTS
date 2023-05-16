@@ -259,12 +259,13 @@
 .fr__pro__prize li {
     color: #313131;
     font-family: Poppins;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
     margin: 0 5px;
 }
 .fr__pro__prize li.old__prize {
     color: #888888;
+    text-decoration: line-through;
 }
 
 /*---------------------------------------

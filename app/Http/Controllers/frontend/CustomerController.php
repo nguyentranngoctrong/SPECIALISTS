@@ -1,5 +1,5 @@
 <?php
-
+// Email và Danh sách vật phẩm yêu thích
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
@@ -24,7 +24,7 @@ class CustomerController extends Controller
     public function __construct(){
         $dataCategory = CategoryModel::all();
         $dataBrand = BrandModel::all();
-        $this->data_seo = new SeoHelper('Kính chào quý khách', 'Bàn decor, gương decor, thảm decor, ghể decor, tranh decor', 'VINANEON - Chuyên cung cấp những vật phẩm decor uy tín, chất lượng, giá rẻ', 'http://127.0.0.1:8000/customer');
+        $this->data_seo = new SeoHelper('Kính chào quý khách', 'Bánh/Kẹo/Mứt, Khô các loại, Sức khỏe/Trà, Nem/Chả/Lạp, Rau/Gạo/Nấm, Rượu các loại Gia Vị', 'VINANEON - Chuyên cung cấp những vật phẩm decor uy tín, chất lượng, giá rẻ', 'http://127.0.0.1:8000/customer');
 
         view()->share(['dataCategory' => $dataCategory, 'dataBrand' => $dataBrand, 'data_seo' => $this->data_seo]);
     }

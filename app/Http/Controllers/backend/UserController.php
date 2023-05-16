@@ -1,5 +1,5 @@
 <?php
-
+// đăng ký cấp quyền
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;

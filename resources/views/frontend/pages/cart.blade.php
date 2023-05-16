@@ -12,12 +12,12 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <th class="product-thumbnail">products</th>
-                                        <th class="product-name">name of products</th>
-                                        <th class="product-price">Price</th>
-                                        <th class="product-quantity">Quantity</th>
-                                        <th class="product-subtotal">Total</th>
-                                        <th class="product-remove">Remove</th>
+                                        <th class="product-thumbnail">Sản Phẩm</th>
+                                        <th class="product-name">Tên Sản Phẩm</th>
+                                        <th class="product-price">Đơn Giá</th>
+                                        <th class="product-quantity">Số Lượng</th>
+                                        <th class="product-subtotal">Thành Tiền</th>
+                                        <th class="product-remove">Xóa Sản Phẩm</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -26,12 +26,12 @@
                                         <tr class="tr-{{$item['cart_id']}}">
                                             <td class="product-thumbnail"><a href="/shop/product/{{$item['cart_id']}}-{{Str::slug($item['cart_product'], '-')}}.html"><img style="width: 100px; height: 120px" src="{{$item['cart_image']}}" alt="product img" /></a></td>
                                             <td class="product-name"><a href="/shop/product/{{$item['cart_id']}}-{{Str::slug($item['cart_product'], '-')}}.html">{{$item['cart_product']}}</a></td>
-                                            <td class="product-price"><span class="amount">{{number_format($item['cart_price_sale'])}}</span></td>
+                                            <td class="product-price"><span class="amount">{{number_format($item['cart_price_sale'])}}<u><i>đ</i></u></span></td>
                                             <form>
                                                 @csrf
                                             <td class="product-quantity"><input class="get_qty" name="qty_{{$item['cart_id']}}" data-id="{{$item['cart_id']}}" type="number" value="{{$item['cart_quantity']}}" /></td>
                                             </form>
-                                            <td class="product-subtotal" name='total_{{$item['cart_id']}}'>{{number_format($item['cart_price_sale'] * $item['cart_quantity'])}}</td>
+                                            <td class="product-subtotal" name='total_{{$item['cart_id']}}'>{{number_format($item['cart_price_sale'] * $item['cart_quantity'])}}<u><i>đ</i></u></td>
                                             <td class="product-remove">
                                                 <form>
                                                     @csrf
@@ -100,7 +100,7 @@
                                         <span id="cart_totals">{{number_format($cart_totals)}} VNĐ</span>
                                     </div>
                                     <ul class="payment__btn">
-                                        <li class="active"><a href="/checkout">thanh toán</a></li>
+                                        <li class="active"><a href="/checkout">Thanh toán</a></li>
                                         
                                     </ul>
                                 </div>
@@ -161,7 +161,7 @@
             })
         })
 
-        //Handle cập nhận cart
+        //Handle cập nhật cart
         $('.get_qty').change(function() {
             var id = $(this).data('id');
             var cart_quantity = $('input[name=qty_'+id).val();

@@ -21,7 +21,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="text-center">VINANEON</h3>
+                <h3 class="text-center">----------------------------------------</h3>
+                <h3 class="text-center">SPECIALTY</h3>
+                
                 <p class="text-center">Đơn hàng ngày {{date('d/m/Y',strtotime($dataOrder->created_at))}}</p>
             </div>
         </div>
@@ -43,8 +45,8 @@
         <hr>
         <div class="row">
             <div class="col-md-12">
-                <p class="test-primary" style="font-size: 20px; font-weight: 400;">Sản phẩm</p>
-                <table class="table text-center" style="border: none">
+                <p class="test-primary" style="font-size: 20px; font-weight: 400;">Thông tin sản phẩm</p>
+                <table class="table text-left" style="border: none">
                     <thead>
                         <tr>
                             <td>Sản phẩm</td>
@@ -65,14 +67,19 @@
             </div>
         </div>
         <hr>
+        
         <div class="row">
-            <p  style="font-size: 20px; font-weight: 400;">Tổng: {{number_format($dataOrder->order_total)}} VNĐ</p>
+            
+            <!-- <p style="font-size: 20px; font-weight: 400;">Phí vận chuyển và giảm giá:  {{number_format($dataOrder->order_total - $item->ship_price )}} VNĐ</p> -->
+            <p  style="font-size: 20px; font-weight: 400;">Tổng hóa đơn(đã tính ship và giảm giá): {{number_format($dataOrder->order_total)}} VNĐ</p>
         </div>
         <br>
         <div class="row">
             <div class="col-md-3 col-sm-3 offset-sm-8 text-center">
                 Người tiếp nhận <br>
                 Ký tên <br>
+                <br>
+                <br>
                 {{ auth()->user()->user_name }}
             </div>
         </div>

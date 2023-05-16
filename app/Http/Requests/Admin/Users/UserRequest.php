@@ -24,8 +24,8 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_name' => 'required|min:10|max:50',
-            'user_email' => 'required|unique:users,user_email|max:30|email:rfc,dns',
+            'user_name' => 'required|min:5|max:50',
+            'user_email' => 'required|unique:users,user_email|max:50|email:rfc,dns',
             'user_password' => 'required|min:5|max:20',
             'user_password_again' => 'required|same:user_password',
         ];

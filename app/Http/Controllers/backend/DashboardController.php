@@ -88,6 +88,7 @@ class DashboardController extends Controller
         $day = $request->day;
         $orderDay = Carbon::today('Asia/Ho_Chi_Minh')->subDay($day);//Lấy ngày
         $today = $this->getToday();
+        //$today = Carbon::now('Asia/Ho_Chi_Minh')->timestamp;
         $dataOrderDay = OrderModel::whereBetween('created_at', [$orderDay, $today])->orderBy('created_at', "ASC")->get();
 
         $dataLabel = array();

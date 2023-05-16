@@ -30,7 +30,7 @@
                                     @if ($item->product->product_amount == 0)
                                     <span class="sale-span">Hết Hàng</span>
                                     @endif
-                                    <a href="product-details.html">
+                                    <a href="/shop/product/{{$item->product->product_id}}-{{Str::slug($item->product->product_name, '-')}}.html">
                                         <img style="max-width: 260px; height: 260px" src="{{$item->product->product_image}}" alt="product images">
                                     </a>
                                 </div>
